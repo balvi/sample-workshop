@@ -17,99 +17,141 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="scrollBox"
+    <layout expand="mainSplit"
             spacing="true">
-        <scrollBox id="scrollBox"
-                   spacing="true">
-            <tabSheet id="mainTabSheet">
-                <tab id="orderLocals"
-                     caption="Main"
-                     margin="true,false,false,false"
-                     spacing="true">
-                    <fieldGroup id="fieldGroup"
-                                datasource="orderInputObjectDs">
-                        <column width="250px">
-                            <field property="description"/>
-                            <field property="hoursSpent"/>
-                            <field property="amount"/>
-                            <field property="status"/>
-                        </column>
-                    </fieldGroup>
-                </tab>
-                <tab id="parts"
-                     caption="Parts"
-                     margin="true,false,false,false"
-                     spacing="true">
-                    <fieldGroup id="partsFieldGroup"
-                                datasource="orderInputObjectDs">
-                        <column width="250px">
-                            <field property="part1Title"/>
-                            <field property="part1Description"/>
-                            <field property="part1Price"/>
-                            <field property="part2Title"/>
-                            <field property="part2Description"/>
-                            <field property="part2Price"/>
-                            <field property="part3Title"/>
-                            <field property="part3Description"/>
-                            <field property="part3Price"/>
-                        </column>
-                    </fieldGroup>
-                </tab>
-                <tab id="clients"
-                     caption="Clients"
-                     margin="true,false,false,false"
-                     spacing="true">
-                    <groupBox id="clientBox"
-                              caption="msg://com.company.workshop.entity/OrderInputObject.client">
-                        <table id="clientTable"
-                               height="200px"
-                               width="100%">
-                            <actions>
-                                <action id="create"/>
-                                <action id="edit"/>
-                                <action id="remove"/>
-                            </actions>
-                            <columns>
-                                <column id="name"/>
-                                <column id="phoneNumber"/>
-                            </columns>
-                            <rows datasource="clientDs"/>
-                            <buttonsPanel>
-                                <button action="clientTable.create"/>
-                                <button action="clientTable.edit"/>
-                                <button action="clientTable.remove"/>
-                            </buttonsPanel>
-                        </table>
-                    </groupBox>
-                </tab>
-                <tab id="mechanincs"
-                     caption="Mechanics"
-                     margin="true,false,false,false"
-                     spacing="true">
-                    <groupBox id="mechanicsBox"
-                              caption="msg://com.company.workshop.entity/OrderInputObject.mechanics">
-                        <table id="mechanicsTable"
-                               height="200px"
-                               width="100%">
-                            <actions>
-                                <action id="create"/>
-                                <action id="edit"/>
-                                <action id="remove"/>
-                            </actions>
-                            <columns>
-                                <column id="user"/>
-                            </columns>
-                            <rows datasource="mechanicsDs"/>
-                            <buttonsPanel>
-                                <button action="mechanicsTable.create"/>
-                                <button action="mechanicsTable.edit"/>
-                                <button action="mechanicsTable.remove"/>
-                            </buttonsPanel>
-                        </table>
-                    </groupBox>
-                </tab>
-            </tabSheet>
-        </scrollBox>
+        <split id="mainSplit"
+               maxSplitPosition="350px"
+               minSplitPosition="250px"
+               orientation="horizontal"
+               pos="250px"
+               width="100%">
+            <vbox id="menu"
+                  margin="true"
+                  spacing="true">
+                <button id="mainBtn"
+                        caption="Main"
+                        invoke="showMainTab"
+                        width="100%"/>
+                <button id="partsButton"
+                        caption="Parts"
+                        invoke="showPartsTab"
+                        width="100%"/>
+                <button id="clientsBtn"
+                        caption="Clients"
+                        invoke="showClientsTab"
+                        width="100%"/>
+                <button id="mechanincsBtn"
+                        caption="Mechanincs"
+                        invoke="showMechanincsTab"
+                        width="100%"/>
+            </vbox>
+            <scrollBox id="scrollBox"
+                       height="100%"
+                       spacing="true">
+                <tabSheet id="mainTabSheet"
+                          tabsVisible="false">
+                    <tab id="orderLocals"
+                         caption="Main"
+                         margin="true"
+                         spacing="true">
+                        <fieldGroup id="fieldGroup"
+                                    datasource="orderInputObjectDs">
+                            <column width="250px">
+                                <field property="description"/>
+                                <field property="hoursSpent"/>
+                                <field property="amount"/>
+                                <field property="status"/>
+                            </column>
+                        </fieldGroup>
+                    </tab>
+                    <tab id="parts"
+                         caption="Parts"
+                         margin="true"
+                         spacing="true">
+                        <fieldGroup id="part1FieldGroup"
+                                    caption="Part 1"
+                                    datasource="orderInputObjectDs">
+                            <column width="250px">
+                                <field property="part1Title"/>
+                                <field property="part1Description"/>
+                                <field property="part1Price"/>
+                            </column>
+                        </fieldGroup>
+                        <fieldGroup id="part2FieldGroup"
+                                    caption="Part 2"
+                                    datasource="orderInputObjectDs">
+                            <column width="250px">
+                                <field property="part2Title"/>
+                                <field property="part2Description"/>
+                                <field property="part2Price"/>
+                            </column>
+                        </fieldGroup>
+                        <fieldGroup id="part3FieldGroup"
+                                    caption="Part 3"
+                                    datasource="orderInputObjectDs">
+                            <column width="250px">
+                                <field property="part3Title"/>
+                                <field property="part3Description"/>
+                                <field property="part3Price"/>
+                            </column>
+                        </fieldGroup>
+                    </tab>
+                    <tab id="clients"
+                         caption="Clients"
+                         margin="true"
+                         spacing="true">
+                        <groupBox id="clientBox"
+                                  caption="msg://com.company.workshop.entity/OrderInputObject.client">
+                            <table id="clientTable"
+                                   height="200px"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="edit"/>
+                                    <action id="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="name"/>
+                                    <column id="phoneNumber"/>
+                                </columns>
+                                <rows datasource="clientDs"/>
+                                <buttonsPanel>
+                                    <button action="clientTable.create"/>
+                                    <button action="clientTable.edit"/>
+                                    <button action="clientTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </tab>
+                    <tab id="mechanincs"
+                         caption="Mechanics"
+                         margin="true"
+                         spacing="true">
+                        <groupBox id="mechanicsBox"
+                                  caption="msg://com.company.workshop.entity/OrderInputObject.mechanics">
+                            <table id="mechanicsTable"
+                                   height="200px"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="edit"/>
+                                    <action id="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="user"/>
+                                </columns>
+                                <rows datasource="mechanicsDs"/>
+                                <buttonsPanel>
+                                    <button action="mechanicsTable.create"/>
+                                    <button action="mechanicsTable.edit"/>
+                                    <button action="mechanicsTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </tab>
+                </tabSheet>
+            </scrollBox>
+        </split>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>
