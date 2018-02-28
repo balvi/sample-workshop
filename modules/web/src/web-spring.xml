@@ -12,8 +12,6 @@
                   ref="cuba_ServerSelector"/>
         <property name="remoteServices">
             <map>
-                <entry key="workshop_OrderService"
-                       value="com.company.workshop.service.OrderService"/>
             </map>
         </property>
     </bean>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.workshop.web.orderinputobject.OrderInputObjectBrowse"
+        focusComponent="orderInputObjectsTable"
+        lookupComponent="orderInputObjectsTable"
+        messagesPack="com.company.workshop.web.orderinputobject">
+    <dsContext>
+        <groupDatasource id="orderInputObjectsDs"
+                         class="com.company.workshop.entity.OrderInputObject"
+                         view="orderInputObject-full-view">
+            <query>
+                <![CDATA[select e from workshop$OrderInputObject e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="orderInputObjectsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="orderInputObjectsTable"
+                datasource="orderInputObjectsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="orderInputObjectsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="description"/>
+                <column id="hoursSpent"/>
+                <column id="amount"/>
+                <column id="part1Title"/>
+                <column id="part1Description"/>
+                <column id="part1Price"/>
+                <column id="part2Title"/>
+                <column id="part2Description"/>
+                <column id="part2Price"/>
+                <column id="part3Title"/>
+                <column id="part3Description"/>
+                <column id="part3Price"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="orderInputObjectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="orderInputObjectsTable.create"/>
+                <button id="editBtn"
+                        action="orderInputObjectsTable.edit"/>
+                <button id="removeBtn"
+                        action="orderInputObjectsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

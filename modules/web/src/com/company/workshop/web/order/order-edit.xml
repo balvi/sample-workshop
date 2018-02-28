@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
-        caption="msg://editCaption"
+        caption="msg://editorCaption"
         class="com.company.workshop.web.order.OrderEdit"
         datasource="orderDs"
         focusComponent="fieldGroup"
@@ -9,44 +9,99 @@
         <datasource id="orderDs"
                     class="com.company.workshop.entity.Order"
                     view="order-view">
-            <collectionDatasource id="partsDs"
-                                  property="parts"/>
+            <datasource id="partDs"
+                        property="part1"/>
+            <collectionDatasource id="clientDs"
+                                  property="client"/>
+            <collectionDatasource id="mechanicsDs"
+                                  property="mechanics"/>
+            <datasource id="part2Ds"
+                        property="part2"/>
+            <datasource id="part3Ds"
+                        property="part3"/>
         </datasource>
     </dsContext>
+    <dialogMode height="600"
+                width="800"/>
     <layout expand="windowActions"
             spacing="true">
-        <fieldGroup id="fieldGroup"
-                    datasource="orderDs">
-            <column width="250px">
-                <field id="client"/>
-                <field id="mechanic"/>
-                <field id="description"
-                       rows="5"/>
-                <field id="hoursSpent"/>
-                <field id="amount"/>
-                <field id="status"/>
-            </column>
-        </fieldGroup>
-        <groupBox id="partsBox"
-                  caption="msg://com.company.workshop.entity/Order.parts">
-            <table id="partsTable"
-                   height="200px"
-                   width="100%">
-                <actions>
-                    <action id="add"/>
-                    <action id="remove"/>
-                </actions>
-                <columns>
-                    <column id="title"/>
-                    <column id="description"/>
-                </columns>
-                <rows datasource="partsDs"/>
-                <buttonsPanel>
-                    <button action="partsTable.add"/>
-                    <button action="partsTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+        <tabSheet id="mainTabSheet">
+            <tab id="orderTab"
+                 caption="Order"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="orderDs"
+                            height="100%">
+                    <column width="250px">
+                        <field property="description"
+                               rows="5"/>
+                        <field property="hoursSpent"/>
+                        <field property="amount"/>
+                        <field property="part1"/>
+                        <field property="part2"/>
+                        <field property="part3"/>
+                        <field property="status"/>
+                    </column>
+                </fieldGroup>
+            </tab>
+            <tab id="clientTab"
+                 caption="Clients"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="clientBox"
+                          caption="msg://com.company.workshop.entity/Order.client"
+                          height="100%">
+                    <table id="clientTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="phoneNumber"/>
+                            <column id="email"/>
+                        </columns>
+                        <rows datasource="clientDs"/>
+                        <buttonsPanel>
+                            <button action="clientTable.create"/>
+                            <button action="clientTable.edit"/>
+                            <button action="clientTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab id="mechanicsTab"
+                 caption="Mechanics"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="mechanicsBox"
+                          caption="msg://com.company.workshop.entity/Order.mechanics"
+                          height="100%">
+                    <table id="mechanicsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="hourlyRate"/>
+                        </columns>
+                        <rows datasource="mechanicsDs"/>
+                        <buttonsPanel>
+                            <button action="mechanicsTable.create"/>
+                            <button action="mechanicsTable.edit"/>
+                            <button action="mechanicsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

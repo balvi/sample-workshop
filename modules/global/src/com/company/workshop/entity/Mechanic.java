@@ -24,6 +24,33 @@ public class Mechanic extends StandardEntity {
     @Column(name = "HOURLY_RATE", nullable = false)
     protected BigDecimal hourlyRate;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_ID")
+    protected Order order;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_INPUT_OBJECT_ID")
+    protected OrderInputObject orderInputObject;
+
+    public void setOrderInputObject(OrderInputObject orderInputObject) {
+        this.orderInputObject = orderInputObject;
+    }
+
+    public OrderInputObject getOrderInputObject() {
+        return orderInputObject;
+    }
+
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+
     public void setUser(User user) {
         this.user = user;
     }

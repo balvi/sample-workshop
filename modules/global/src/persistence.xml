@@ -7,5 +7,6 @@
         <class>com.company.workshop.entity.Mechanic</class>
         <class>com.company.workshop.entity.SparePart</class>
         <class>com.company.workshop.entity.Order</class>
+        <class>com.company.workshop.entity.OrderInputObject</class>
     </persistence-unit>
 </persistence>

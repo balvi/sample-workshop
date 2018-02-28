@@ -1,0 +1,2 @@
+alter table WORKSHOP_ORDER add constraint FK_WORKSHOP_ORDER_PART3 foreign key (PART3_ID) references WORKSHOP_SPARE_PART(ID);
+create index IDX_WORKSHOP_ORDER_PART3 on WORKSHOP_ORDER (PART3_ID);

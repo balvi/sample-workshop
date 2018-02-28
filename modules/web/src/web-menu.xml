@@ -5,6 +5,7 @@
         <item id="workshop$SparePart.browse"/>
         <item id="workshop$Client.browse"/>
         <item id="workshop$Mechanic.browse"/>
-        <item id="workshop$Order.browse"/>
+        <item screen="workshop$Order.browse"/>
+        <item screen="workshop$OrderInputObject.browse"/>
     </menu>
 </menu-config>

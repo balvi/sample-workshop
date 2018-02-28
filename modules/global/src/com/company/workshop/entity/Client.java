@@ -5,6 +5,9 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @NamePattern("%s %s|name,phoneNumber")
 @Table(name = "WORKSHOP_CLIENT")
@@ -20,6 +23,32 @@ public class Client extends StandardEntity {
 
     @Column(name = "EMAIL", nullable = false, unique = true, length = 20)
     protected String email;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_ID")
+    protected Order order;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_INPUT_OBJECT_ID")
+    protected OrderInputObject orderInputObject;
+
+    public void setOrderInputObject(OrderInputObject orderInputObject) {
+        this.orderInputObject = orderInputObject;
+    }
+
+    public OrderInputObject getOrderInputObject() {
+        return orderInputObject;
+    }
+
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
 
     public void setName(String name) {
         this.name = name;

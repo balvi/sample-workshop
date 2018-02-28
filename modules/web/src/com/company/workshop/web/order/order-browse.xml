@@ -6,14 +6,16 @@
         lookupComponent="ordersTable"
         messagesPack="com.company.workshop.web.order">
     <dsContext>
-        <collectionDatasource id="ordersDs"
-                              class="com.company.workshop.entity.Order"
-                              view="order-view">
+        <groupDatasource id="ordersDs"
+                         class="com.company.workshop.entity.Order"
+                         view="order-view">
             <query>
                 <![CDATA[select e from workshop$Order e]]>
             </query>
-        </collectionDatasource>
+        </groupDatasource>
     </dsContext>
+    <dialogMode height="600"
+                width="800"/>
     <layout expand="ordersTable"
             spacing="true">
         <filter id="filter"
@@ -21,20 +23,20 @@
                 datasource="ordersDs">
             <properties include=".*"/>
         </filter>
-        <table id="ordersTable"
-               width="100%">
+        <groupTable id="ordersTable"
+                    width="100%">
             <actions>
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
-                <action id="excel"/>
             </actions>
             <columns>
-                <column id="client"/>
-                <column id="mechanic"/>
                 <column id="description"/>
                 <column id="hoursSpent"/>
                 <column id="amount"/>
+                <column id="part1"/>
+                <column id="part2"/>
+                <column id="part3"/>
                 <column id="status"/>
             </columns>
             <rows datasource="ordersDs"/>
@@ -47,17 +49,7 @@
                         action="ordersTable.edit"/>
                 <button id="removeBtn"
                         action="ordersTable.remove"/>
-                <button action="ordersTable.excel"/>
-                <button id="btnSetNewStatus"
-                        caption="Set as New"
-                        invoke="onBtnSetNewStatusClick"/>
-                <button id="btnSetInProgressStatus"
-                        caption="Set as In Progress"
-                        invoke="onBtnSetInProgressStatusClick"/>
-                <button id="btnSetReadyStatus"
-                        caption="Set as Ready"
-                        invoke="onBtnSetReadyStatusClick"/>
             </buttonsPanel>
-        </table>
+        </groupTable>
     </layout>
 </window>

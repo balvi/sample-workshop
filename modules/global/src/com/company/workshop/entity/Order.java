@@ -1,18 +1,14 @@
 package com.company.workshop.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.math.BigDecimal;
-import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @NamePattern("%s|description")
 @Table(name = "WORKSHOP_ORDER")
@@ -20,13 +16,15 @@ import com.haulmont.chile.core.annotations.NamePattern;
 public class Order extends StandardEntity {
     private static final long serialVersionUID = 922007560588072984L;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CLIENT_ID")
-    protected Client client;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "order")
+    protected List<Client> client;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "MECHANIC_ID")
-    protected Mechanic mechanic;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "order")
+    protected List<Mechanic> mechanics;
 
     @Lob
     @Column(name = "DESCRIPTION")
@@ -38,30 +36,72 @@ public class Order extends StandardEntity {
     @Column(name = "AMOUNT")
     protected BigDecimal amount;
 
-    @JoinTable(name = "WORKSHOP_ORDER_SPARE_PART_LINK",
-        joinColumns = @JoinColumn(name = "ORDER_ID"),
-        inverseJoinColumns = @JoinColumn(name = "SPARE_PART_ID"))
-    @ManyToMany
-    protected Set<SparePart> parts;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART1_ID")
+    protected SparePart part1;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART2_ID")
+    protected SparePart part2;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART3_ID")
+    protected SparePart part3;
 
     @Column(name = "STATUS")
     protected Integer status;
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setPart2(SparePart part2) {
+        this.part2 = part2;
     }
 
-    public Client getClient() {
+    public SparePart getPart2() {
+        return part2;
+    }
+
+    public void setPart3(SparePart part3) {
+        this.part3 = part3;
+    }
+
+    public SparePart getPart3() {
+        return part3;
+    }
+
+
+    public void setPart1(SparePart part1) {
+        this.part1 = part1;
+    }
+
+    public SparePart getPart1() {
+        return part1;
+    }
+
+
+    public void setMechanics(List<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
+
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+
+
+    public List<Client> getClient() {
         return client;
     }
 
-    public void setMechanic(Mechanic mechanic) {
-        this.mechanic = mechanic;
+    public void setClient(List<Client> client) {
+        this.client = client;
     }
 
-    public Mechanic getMechanic() {
-        return mechanic;
-    }
+
 
     public void setDescription(String description) {
         this.description = description;
@@ -85,14 +125,6 @@ public class Order extends StandardEntity {
 
     public BigDecimal getAmount() {
         return amount;
-    }
-
-    public void setParts(Set<SparePart> parts) {
-        this.parts = parts;
-    }
-
-    public Set<SparePart> getParts() {
-        return parts;
     }
 
     public void setStatus(OrderStatus status) {

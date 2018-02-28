@@ -1,0 +1,2 @@
+alter table WORKSHOP_CLIENT add constraint FK_WORKSHOP_CLIENT_ORDER foreign key (ORDER_ID) references WORKSHOP_ORDER(ID);
+create index IDX_WORKSHOP_CLIENT_ORDER on WORKSHOP_CLIENT (ORDER_ID);

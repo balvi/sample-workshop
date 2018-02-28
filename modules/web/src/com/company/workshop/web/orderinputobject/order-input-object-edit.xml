@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.workshop.web.orderinputobject.OrderInputObjectEdit"
+        datasource="orderInputObjectDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.workshop.web.orderinputobject">
+    <dsContext>
+        <datasource id="orderInputObjectDs"
+                    class="com.company.workshop.entity.OrderInputObject"
+                    view="orderInputObject-full-view">
+            <collectionDatasource id="clientDs"
+                                  property="client"/>
+            <collectionDatasource id="mechanicsDs"
+                                  property="mechanics"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <tabSheet id="mainTabSheet">
+                <tab id="orderLocals"
+                     caption="Main"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <fieldGroup id="fieldGroup"
+                                datasource="orderInputObjectDs">
+                        <column width="250px">
+                            <field property="description"/>
+                            <field property="hoursSpent"/>
+                            <field property="amount"/>
+                            <field property="status"/>
+                        </column>
+                    </fieldGroup>
+                </tab>
+                <tab id="parts"
+                     caption="Parts"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <fieldGroup id="partsFieldGroup"
+                                datasource="orderInputObjectDs">
+                        <column width="250px">
+                            <field property="part1Title"/>
+                            <field property="part1Description"/>
+                            <field property="part1Price"/>
+                            <field property="part2Title"/>
+                            <field property="part2Description"/>
+                            <field property="part2Price"/>
+                            <field property="part3Title"/>
+                            <field property="part3Description"/>
+                            <field property="part3Price"/>
+                        </column>
+                    </fieldGroup>
+                </tab>
+                <tab id="clients"
+                     caption="Clients"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox id="clientBox"
+                              caption="msg://com.company.workshop.entity/OrderInputObject.client">
+                        <table id="clientTable"
+                               height="200px"
+                               width="100%">
+                            <actions>
+                                <action id="create"/>
+                                <action id="edit"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                                <column id="phoneNumber"/>
+                            </columns>
+                            <rows datasource="clientDs"/>
+                            <buttonsPanel>
+                                <button action="clientTable.create"/>
+                                <button action="clientTable.edit"/>
+                                <button action="clientTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="mechanincs"
+                     caption="Mechanics"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox id="mechanicsBox"
+                              caption="msg://com.company.workshop.entity/OrderInputObject.mechanics">
+                        <table id="mechanicsTable"
+                               height="200px"
+                               width="100%">
+                            <actions>
+                                <action id="create"/>
+                                <action id="edit"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="user"/>
+                            </columns>
+                            <rows datasource="mechanicsDs"/>
+                            <buttonsPanel>
+                                <button action="mechanicsTable.create"/>
+                                <button action="mechanicsTable.edit"/>
+                                <button action="mechanicsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

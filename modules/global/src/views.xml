@@ -10,15 +10,25 @@
           extends="_local"
           name="order-view">
         <property name="client"
-                  view="_minimal"/>
-        <property name="mechanic"
-                  view="_minimal">
-            <property name="hourlyRate"/>
-        </property>
-        <property name="parts"
+                  view="_local"/>
+        <property name="mechanics"
+                  view="_local"/>
+        <property name="part1"
                   view="_minimal">
             <property name="description"/>
             <property name="price"/>
         </property>
+        <property name="part2"
+                  view="_minimal"/>
+        <property name="part3"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.workshop.entity.OrderInputObject"
+          extends="_local"
+          name="orderInputObject-full-view">
+        <property name="client"
+                  view="_minimal"/>
+        <property name="mechanics"
+                  view="_minimal"/>
     </view>
 </views>
