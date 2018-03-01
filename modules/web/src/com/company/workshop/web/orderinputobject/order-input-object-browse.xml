@@ -44,6 +44,8 @@
                 <column id="part3Description"/>
                 <column id="part3Price"/>
                 <column id="status"/>
+                <column id="mechanicsCount"/>
+                <column id="clientCounts"/>
             </columns>
             <rows datasource="orderInputObjectsDs"/>
             <rowsCount/>

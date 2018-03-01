@@ -21,6 +21,12 @@ public class OrderInputObject extends StandardEntity {
     @Column(name = "DESCRIPTION")
     protected String description;
 
+    @Column(name = "MECHANICS_COUNT")
+    protected Integer mechanicsCount;
+
+    @Column(name = "CLIENT_COUNTS")
+    protected Integer clientCounts;
+
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "orderInputObject")
@@ -66,6 +72,24 @@ public class OrderInputObject extends StandardEntity {
 
     @Column(name = "STATUS")
     protected Integer status;
+
+    public void setMechanicsCount(Integer mechanicsCount) {
+        this.mechanicsCount = mechanicsCount;
+    }
+
+    public Integer getMechanicsCount() {
+        return mechanicsCount;
+    }
+
+
+    public void setClientCounts(Integer clientCounts) {
+        this.clientCounts = clientCounts;
+    }
+
+    public Integer getClientCounts() {
+        return clientCounts;
+    }
+
 
     public void setClient(List<Client> client) {
         this.client = client;

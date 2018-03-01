@@ -41,7 +41,7 @@
                         invoke="showClientsTab"
                         width="100%"/>
                 <button id="mechanincsBtn"
-                        caption="Mechanincs"
+                        caption="Mechanics"
                         invoke="showMechanincsTab"
                         width="100%"/>
             </vbox>
@@ -61,6 +61,8 @@
                                 <field property="hoursSpent"/>
                                 <field property="amount"/>
                                 <field property="status"/>
+                                <field property="machanicsCount"/>
+                                <field property="clientCounts"/>
                             </column>
                         </fieldGroup>
                     </tab>

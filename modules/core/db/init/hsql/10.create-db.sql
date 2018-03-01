@@ -89,6 +89,8 @@ create table WORKSHOP_ORDER_INPUT_OBJECT (
     DELETED_BY varchar(50),
     --
     DESCRIPTION varchar(255),
+    MECHANICS_COUNT integer,
+    CLIENT_COUNTS integer,
     HOURS_SPENT integer,
     AMOUNT decimal(19, 2),
     PART1_TITLE varchar(255),
