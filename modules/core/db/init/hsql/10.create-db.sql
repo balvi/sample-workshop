@@ -32,7 +32,6 @@ create table WORKSHOP_MECHANIC (
     USER_ID varchar(36) not null,
     HOURLY_RATE decimal(19, 2) not null,
     ORDER_ID varchar(36),
-    ORDER_INPUT_OBJECT_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -89,6 +88,9 @@ create table WORKSHOP_ORDER_INPUT_OBJECT (
     DELETED_BY varchar(50),
     --
     DESCRIPTION varchar(255),
+    INVOICE_RECIPIENT_ID varchar(36),
+    INVOICE_TOTAL double precision,
+    INVOICE_BILLER varchar(255),
     MECHANICS_COUNT integer,
     CLIENT_COUNTS integer,
     HOURS_SPENT integer,
@@ -107,3 +109,30 @@ create table WORKSHOP_ORDER_INPUT_OBJECT (
     primary key (ID)
 )^
 -- end WORKSHOP_ORDER_INPUT_OBJECT
+-- begin WORKSHOP_ORDER_INPUT_OBJECT_MECHANIC_LINK
+create table WORKSHOP_ORDER_INPUT_OBJECT_MECHANIC_LINK (
+    ORDER_INPUT_OBJECT_ID varchar(36) not null,
+    MECHANIC_ID varchar(36) not null,
+    primary key (ORDER_INPUT_OBJECT_ID, MECHANIC_ID)
+)^
+-- end WORKSHOP_ORDER_INPUT_OBJECT_MECHANIC_LINK
+-- begin WORKSHOP_INVOICE
+create table WORKSHOP_INVOICE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    TOTAL double precision,
+    CLIENT_ID varchar(36),
+    ORDER_ID varchar(36),
+    RECIPIENT varchar(255),
+    BILLER varchar(255),
+    --
+    primary key (ID)
+)^
+-- end WORKSHOP_INVOICE

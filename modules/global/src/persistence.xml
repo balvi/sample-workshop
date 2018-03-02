@@ -8,5 +8,6 @@
         <class>com.company.workshop.entity.SparePart</class>
         <class>com.company.workshop.entity.Order</class>
         <class>com.company.workshop.entity.OrderInputObject</class>
+        <class>com.company.workshop.entity.Invoice</class>
     </persistence-unit>
 </persistence>

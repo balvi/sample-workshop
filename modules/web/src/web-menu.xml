@@ -7,5 +7,6 @@
         <item id="workshop$Mechanic.browse"/>
         <item screen="workshop$Order.browse"/>
         <item screen="workshop$OrderInputObject.browse"/>
+        <item screen="workshop$Invoice.browse"/>
     </menu>
 </menu-config>

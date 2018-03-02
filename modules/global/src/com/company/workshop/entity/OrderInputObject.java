@@ -11,6 +11,11 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import java.util.List;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 
 @NamePattern("%s|description")
 @Table(name = "WORKSHOP_ORDER_INPUT_OBJECT")
@@ -20,6 +25,16 @@ public class OrderInputObject extends StandardEntity {
 
     @Column(name = "DESCRIPTION")
     protected String description;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "INVOICE_RECIPIENT_ID")
+    protected Client invoiceRecipient;
+
+    @Column(name = "INVOICE_TOTAL")
+    protected Double invoiceTotal;
+
+    @Column(name = "INVOICE_BILLER")
+    protected String invoiceBiller;
 
     @Column(name = "MECHANICS_COUNT")
     protected Integer mechanicsCount;
@@ -32,9 +47,11 @@ public class OrderInputObject extends StandardEntity {
     @OneToMany(mappedBy = "orderInputObject")
     protected List<Client> client;
 
-    @Composition
+    @JoinTable(name = "WORKSHOP_ORDER_INPUT_OBJECT_MECHANIC_LINK",
+        joinColumns = @JoinColumn(name = "ORDER_INPUT_OBJECT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "MECHANIC_ID"))
+    @ManyToMany
     @OnDelete(DeletePolicy.CASCADE)
-    @OneToMany(mappedBy = "orderInputObject")
     protected List<Mechanic> mechanics;
 
     @Column(name = "HOURS_SPENT")
@@ -72,6 +89,33 @@ public class OrderInputObject extends StandardEntity {
 
     @Column(name = "STATUS")
     protected Integer status;
+
+    public Client getInvoiceRecipient() {
+        return invoiceRecipient;
+    }
+
+    public void setInvoiceRecipient(Client invoiceRecipient) {
+        this.invoiceRecipient = invoiceRecipient;
+    }
+
+
+
+    public void setInvoiceTotal(Double invoiceTotal) {
+        this.invoiceTotal = invoiceTotal;
+    }
+
+    public Double getInvoiceTotal() {
+        return invoiceTotal;
+    }
+
+    public void setInvoiceBiller(String invoiceBiller) {
+        this.invoiceBiller = invoiceBiller;
+    }
+
+    public String getInvoiceBiller() {
+        return invoiceBiller;
+    }
+
 
     public void setMechanicsCount(Integer mechanicsCount) {
         this.mechanicsCount = mechanicsCount;

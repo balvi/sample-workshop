@@ -17,15 +17,18 @@ public class OrderInputObjectEdit extends AbstractEditor<OrderInputObject> {
     }
 
     public void showPartsTab() {
-            mainTabSheet.setSelectedTab("parts");
+        mainTabSheet.setSelectedTab("parts");
     }
 
     public void showClientsTab() {
-                mainTabSheet.setSelectedTab("clients");
-
+        mainTabSheet.setSelectedTab("clients");
     }
 
     public void showMechanincsTab() {
-   mainTabSheet.setSelectedTab("mechanincs");
+        mainTabSheet.setSelectedTab("mechanincs");
+    }
+
+    public void showInvoiceTab() {
+        mainTabSheet.setSelectedTab("invoice");
     }
 }

@@ -30,5 +30,13 @@
                   view="_minimal"/>
         <property name="mechanics"
                   view="_minimal"/>
+        <property name="invoiceRecipient"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.workshop.entity.Invoice"
+          extends="_local"
+          name="invoice-order-view">
+        <property name="order"
+                  view="_local"/>
     </view>
 </views>

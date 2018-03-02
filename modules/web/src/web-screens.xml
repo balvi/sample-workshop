@@ -21,4 +21,8 @@
             template="com/company/workshop/web/orderinputobject/order-input-object-browse.xml"/>
     <screen id="workshop$OrderInputObject.edit"
             template="com/company/workshop/web/orderinputobject/order-input-object-edit.xml"/>
+    <screen id="workshop$Invoice.browse"
+            template="com/company/workshop/web/invoice/invoice-browse.xml"/>
+    <screen id="workshop$Invoice.edit"
+            template="com/company/workshop/web/invoice/invoice-edit.xml"/>
 </screen-config>

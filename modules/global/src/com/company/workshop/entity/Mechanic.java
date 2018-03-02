@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import java.util.List;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @NamePattern("%s|user")
 @Table(name = "WORKSHOP_MECHANIC")
@@ -29,16 +32,19 @@ public class Mechanic extends StandardEntity {
     @JoinColumn(name = "ORDER_ID")
     protected Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDER_INPUT_OBJECT_ID")
-    protected OrderInputObject orderInputObject;
 
-    public void setOrderInputObject(OrderInputObject orderInputObject) {
-        this.orderInputObject = orderInputObject;
+    @JoinTable(name = "WORKSHOP_ORDER_INPUT_OBJECT_MECHANIC_LINK",
+        joinColumns = @JoinColumn(name = "MECHANIC_ID"),
+        inverseJoinColumns = @JoinColumn(name = "ORDER_INPUT_OBJECT_ID"))
+    @ManyToMany
+    protected List<OrderInputObject> orderInputObjects;
+
+    public void setOrderInputObjects(List<OrderInputObject> orderInputObjects) {
+        this.orderInputObjects = orderInputObjects;
     }
 
-    public OrderInputObject getOrderInputObject() {
-        return orderInputObject;
+    public List<OrderInputObject> getOrderInputObjects() {
+        return orderInputObjects;
     }
 
 

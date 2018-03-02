@@ -44,6 +44,10 @@
                         caption="Mechanics"
                         invoke="showMechanincsTab"
                         width="100%"/>
+                <button id="invoiceBtn"
+                        caption="Invoice"
+                        invoke="showInvoiceTab"
+                        width="100%"/>
             </vbox>
             <scrollBox id="scrollBox"
                        height="100%"
@@ -61,7 +65,7 @@
                                 <field property="hoursSpent"/>
                                 <field property="amount"/>
                                 <field property="status"/>
-                                <field property="machanicsCount"/>
+                                <field property="mechanicsCount"/>
                                 <field property="clientCounts"/>
                             </column>
                         </fieldGroup>
@@ -135,6 +139,7 @@
                                    height="200px"
                                    width="100%">
                                 <actions>
+                                    <action id="add"/>
                                     <action id="create"/>
                                     <action id="edit"/>
                                     <action id="remove"/>
@@ -144,12 +149,26 @@
                                 </columns>
                                 <rows datasource="mechanicsDs"/>
                                 <buttonsPanel>
+                                    <button action="mechanicsTable.add"/>
                                     <button action="mechanicsTable.create"/>
                                     <button action="mechanicsTable.edit"/>
                                     <button action="mechanicsTable.remove"/>
                                 </buttonsPanel>
                             </table>
                         </groupBox>
+                    </tab>
+                    <tab id="invoice"
+                         caption="Tab"
+                         margin="true"
+                         spacing="true">
+                        <fieldGroup id="invoceFieldGroup"
+                                    datasource="orderInputObjectDs">
+                            <column width="250px">
+                                <field property="invoiceBiller"/>
+                                <field property="invoiceTotal"/>
+                                <field property="invoiceRecipient" caption="Recipient"/>
+                            </column>
+                        </fieldGroup>
                     </tab>
                 </tabSheet>
             </scrollBox>

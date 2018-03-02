@@ -9,99 +9,81 @@
         <datasource id="orderDs"
                     class="com.company.workshop.entity.Order"
                     view="order-view">
-            <datasource id="partDs"
+            <datasource id="part1Ds"
                         property="part1"/>
-            <collectionDatasource id="clientDs"
-                                  property="client"/>
-            <collectionDatasource id="mechanicsDs"
-                                  property="mechanics"/>
             <datasource id="part2Ds"
                         property="part2"/>
             <datasource id="part3Ds"
                         property="part3"/>
+            <collectionDatasource id="clientDs"
+                                  property="client"/>
+            <collectionDatasource id="mechanicsDs"
+                                  property="mechanics"/>
         </datasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="windowActions"
             spacing="true">
-        <tabSheet id="mainTabSheet">
-            <tab id="orderTab"
-                 caption="Order"
-                 margin="true,false,false,false"
-                 spacing="true">
-                <fieldGroup id="fieldGroup"
-                            datasource="orderDs"
-                            height="100%">
-                    <column width="250px">
-                        <field property="description"
-                               rows="5"/>
-                        <field property="hoursSpent"/>
-                        <field property="amount"/>
-                        <field property="part1"/>
-                        <field property="part2"/>
-                        <field property="part3"/>
-                        <field property="status"/>
-                    </column>
-                </fieldGroup>
-            </tab>
-            <tab id="clientTab"
-                 caption="Clients"
-                 margin="true,false,false,false"
-                 spacing="true">
-                <groupBox id="clientBox"
-                          caption="msg://com.company.workshop.entity/Order.client"
-                          height="100%">
-                    <table id="clientTable"
-                           height="200px"
-                           width="100%">
-                        <actions>
-                            <action id="create"/>
-                            <action id="edit"/>
-                            <action id="remove"/>
-                        </actions>
-                        <columns>
-                            <column id="name"/>
-                            <column id="phoneNumber"/>
-                            <column id="email"/>
-                        </columns>
-                        <rows datasource="clientDs"/>
-                        <buttonsPanel>
-                            <button action="clientTable.create"/>
-                            <button action="clientTable.edit"/>
-                            <button action="clientTable.remove"/>
-                        </buttonsPanel>
-                    </table>
-                </groupBox>
-            </tab>
-            <tab id="mechanicsTab"
-                 caption="Mechanics"
-                 margin="true,false,false,false"
-                 spacing="true">
-                <groupBox id="mechanicsBox"
-                          caption="msg://com.company.workshop.entity/Order.mechanics"
-                          height="100%">
-                    <table id="mechanicsTable"
-                           height="200px"
-                           width="100%">
-                        <actions>
-                            <action id="create"/>
-                            <action id="edit"/>
-                            <action id="remove"/>
-                        </actions>
-                        <columns>
-                            <column id="hourlyRate"/>
-                        </columns>
-                        <rows datasource="mechanicsDs"/>
-                        <buttonsPanel>
-                            <button action="mechanicsTable.create"/>
-                            <button action="mechanicsTable.edit"/>
-                            <button action="mechanicsTable.remove"/>
-                        </buttonsPanel>
-                    </table>
-                </groupBox>
-            </tab>
-        </tabSheet>
+        <fieldGroup id="fieldGroup"
+                    datasource="orderDs">
+            <column width="250px">
+                <field property="description"
+                       rows="5"/>
+                <field property="hoursSpent"/>
+                <field property="amount"/>
+                <field property="part1"/>
+                <field property="part2"/>
+                <field property="part3"/>
+                <field property="status"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="clientBox"
+                  caption="msg://com.company.workshop.entity/Order.client">
+            <table id="clientTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="phoneNumber"/>
+                    <column id="email"/>
+                </columns>
+                <rows datasource="clientDs"/>
+                <buttonsPanel>
+                    <button action="clientTable.create"/>
+                    <button action="clientTable.edit"/>
+                    <button action="clientTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="mechanicsBox"
+                  caption="msg://com.company.workshop.entity/Order.mechanics">
+            <table id="mechanicsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="hourlyRate"/>
+                </columns>
+                <rows datasource="mechanicsDs"/>
+                <buttonsPanel>
+                    <button action="mechanicsTable.create"/>
+                    <button action="mechanicsTable.edit"/>
+                    <button action="mechanicsTable.add"/>
+                    <button action="mechanicsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>
