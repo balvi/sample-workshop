@@ -34,15 +34,6 @@
                 <column id="description"/>
                 <column id="hoursSpent"/>
                 <column id="amount"/>
-                <column id="part1Title"/>
-                <column id="part1Description"/>
-                <column id="part1Price"/>
-                <column id="part2Title"/>
-                <column id="part2Description"/>
-                <column id="part2Price"/>
-                <column id="part3Title"/>
-                <column id="part3Description"/>
-                <column id="part3Price"/>
                 <column id="status"/>
                 <column id="mechanicsCount"/>
                 <column id="clientCounts"/>

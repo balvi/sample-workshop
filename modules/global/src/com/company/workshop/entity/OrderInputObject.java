@@ -60,35 +60,51 @@ public class OrderInputObject extends StandardEntity {
     @Column(name = "AMOUNT")
     protected BigDecimal amount;
 
-    @Column(name = "PART1_TITLE")
-    protected String part1Title;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART1_ID")
+    protected SparePart part1;
 
-    @Column(name = "PART1_DESCRIPTION")
-    protected String part1Description;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART2_ID")
+    protected SparePart part2;
 
-    @Column(name = "PART1_PRICE")
-    protected String part1Price;
-
-    @Column(name = "PART2_TITLE")
-    protected String part2Title;
-
-    @Column(name = "PART2_DESCRIPTION")
-    protected String part2Description;
-
-    @Column(name = "PART2_PRICE")
-    protected String part2Price;
-
-    @Column(name = "PART3_TITLE")
-    protected String part3Title;
-
-    @Column(name = "PART3_DESCRIPTION")
-    protected String part3Description;
-
-    @Column(name = "PART3_PRICE")
-    protected String part3Price;
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PART3_ID")
+    protected SparePart part3;
 
     @Column(name = "STATUS")
     protected Integer status;
+
+    public void setPart1(SparePart part1) {
+        this.part1 = part1;
+    }
+
+    public SparePart getPart1() {
+        return part1;
+    }
+
+    public void setPart2(SparePart part2) {
+        this.part2 = part2;
+    }
+
+    public SparePart getPart2() {
+        return part2;
+    }
+
+    public void setPart3(SparePart part3) {
+        this.part3 = part3;
+    }
+
+    public SparePart getPart3() {
+        return part3;
+    }
+
 
     public Client getInvoiceRecipient() {
         return invoiceRecipient;
@@ -174,78 +190,6 @@ public class OrderInputObject extends StandardEntity {
 
     public BigDecimal getAmount() {
         return amount;
-    }
-
-    public void setPart1Title(String part1Title) {
-        this.part1Title = part1Title;
-    }
-
-    public String getPart1Title() {
-        return part1Title;
-    }
-
-    public void setPart1Description(String part1Description) {
-        this.part1Description = part1Description;
-    }
-
-    public String getPart1Description() {
-        return part1Description;
-    }
-
-    public void setPart1Price(String part1Price) {
-        this.part1Price = part1Price;
-    }
-
-    public String getPart1Price() {
-        return part1Price;
-    }
-
-    public void setPart2Title(String part2Title) {
-        this.part2Title = part2Title;
-    }
-
-    public String getPart2Title() {
-        return part2Title;
-    }
-
-    public void setPart2Description(String part2Description) {
-        this.part2Description = part2Description;
-    }
-
-    public String getPart2Description() {
-        return part2Description;
-    }
-
-    public void setPart2Price(String part2Price) {
-        this.part2Price = part2Price;
-    }
-
-    public String getPart2Price() {
-        return part2Price;
-    }
-
-    public void setPart3Title(String part3Title) {
-        this.part3Title = part3Title;
-    }
-
-    public String getPart3Title() {
-        return part3Title;
-    }
-
-    public void setPart3Description(String part3Description) {
-        this.part3Description = part3Description;
-    }
-
-    public String getPart3Description() {
-        return part3Description;
-    }
-
-    public void setPart3Price(String part3Price) {
-        this.part3Price = part3Price;
-    }
-
-    public String getPart3Price() {
-        return part3Price;
     }
 
     public void setStatus(Integer status) {
