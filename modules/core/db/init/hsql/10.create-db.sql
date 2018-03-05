@@ -95,15 +95,9 @@ create table WORKSHOP_ORDER_INPUT_OBJECT (
     CLIENT_COUNTS integer,
     HOURS_SPENT integer,
     AMOUNT decimal(19, 2),
-    PART1_TITLE varchar(255),
-    PART1_DESCRIPTION varchar(255),
-    PART1_PRICE varchar(255),
-    PART2_TITLE varchar(255),
-    PART2_DESCRIPTION varchar(255),
-    PART2_PRICE varchar(255),
-    PART3_TITLE varchar(255),
-    PART3_DESCRIPTION varchar(255),
-    PART3_PRICE varchar(255),
+    PART1_ID varchar(36),
+    PART2_ID varchar(36),
+    PART3_ID varchar(36),
     STATUS integer,
     --
     primary key (ID)

@@ -13,6 +13,12 @@
                                   property="client"/>
             <collectionDatasource id="mechanicsDs"
                                   property="mechanics"/>
+            <datasource id="part1Ds"
+                        property="part1"/>
+            <datasource id="part2Ds"
+                        property="part2"/>
+            <datasource id="part3Ds"
+                        property="part3"/>
         </datasource>
     </dsContext>
     <dialogMode height="600"
@@ -76,29 +82,29 @@
                          spacing="true">
                         <fieldGroup id="part1FieldGroup"
                                     caption="Part 1"
-                                    datasource="orderInputObjectDs">
+                                    datasource="part1Ds">
                             <column width="250px">
-                                <field property="part1Title"/>
-                                <field property="part1Description"/>
-                                <field property="part1Price"/>
+                                <field property="title"/>
+                                <field property="description"/>
+                                <field property="price"/>
                             </column>
                         </fieldGroup>
                         <fieldGroup id="part2FieldGroup"
                                     caption="Part 2"
-                                    datasource="orderInputObjectDs">
+                                    datasource="part2Ds">
                             <column width="250px">
-                                <field property="part2Title"/>
-                                <field property="part2Description"/>
-                                <field property="part2Price"/>
+                                <field property="title"/>
+                                <field property="description"/>
+                                <field property="price"/>
                             </column>
                         </fieldGroup>
                         <fieldGroup id="part3FieldGroup"
                                     caption="Part 3"
-                                    datasource="orderInputObjectDs">
+                                    datasource="part3Ds">
                             <column width="250px">
-                                <field property="part3Title"/>
-                                <field property="part3Description"/>
-                                <field property="part3Price"/>
+                                <field property="title"/>
+                                <field property="description"/>
+                                <field property="price"/>
                             </column>
                         </fieldGroup>
                     </tab>
@@ -166,7 +172,8 @@
                             <column width="250px">
                                 <field property="invoiceBiller"/>
                                 <field property="invoiceTotal"/>
-                                <field property="invoiceRecipient" caption="Recipient"/>
+                                <field caption="Recipient"
+                                       property="invoiceRecipient"/>
                             </column>
                         </fieldGroup>
                     </tab>

@@ -32,6 +32,12 @@
                   view="_minimal"/>
         <property name="invoiceRecipient"
                   view="_minimal"/>
+        <property name="part1"
+                  view="_local"/>
+        <property name="part2"
+                  view="_local"/>
+        <property name="part3"
+                  view="_local"/>
     </view>
     <view class="com.company.workshop.entity.Invoice"
           extends="_local"

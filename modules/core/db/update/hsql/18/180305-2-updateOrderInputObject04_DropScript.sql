@@ -1,0 +1,9 @@
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART1_TITLE__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART1_DESCRIPTION__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART1_PRICE__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART2_TITLE__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART2_DESCRIPTION__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART2_PRICE__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART3_TITLE__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART3_DESCRIPTION__UNUSED cascade ;
+alter table WORKSHOP_ORDER_INPUT_OBJECT drop column PART3_PRICE__UNUSED cascade ;
